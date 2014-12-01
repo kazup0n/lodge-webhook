@@ -8,7 +8,6 @@ module LodgeWebhook
         conn.post path, article
       rescue => e
         LodgeWebhook::logger.error e
-        raise e
       end
     end
 

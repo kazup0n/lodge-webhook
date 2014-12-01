@@ -12,7 +12,7 @@ module SenderMock
 
     LodgeWebhook::Sender.any_instance.stubs(:connection).returns conn
 
-    yield stubs if block_given?
+    yield stubs, conn if block_given?
   end
 
   def self.clear

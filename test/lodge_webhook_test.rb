@@ -18,6 +18,9 @@ class LodgeWebhookTest < ActiveSupport::TestCase
   end
 
   test "server not respond when requesting on hook" do
+    SenderMock.config do |stub, conn|
+      conn.expects(:post).raises RuntimeError
+    end
     Article.new.save
   end
 
