@@ -11,12 +11,16 @@ module SenderMock
     end
 
     LodgeWebhook::Sender.any_instance.stubs(:connection).returns conn
-
+    @@stubs = stubs
     yield stubs, conn if block_given?
   end
 
   def self.clear
-    config
+    config()
+  end
+
+  def self.verify
+    @@stubs.verify_stubbed_calls() if @@stubs
   end
 
 end

@@ -2,12 +2,23 @@ require 'faraday'
 
 module LodgeWebhook
   class Sender
+    KEY_SECRET = 'X-HUBOT-LODGE-WEBHOOK-SECRET'
+
+    def initialize(secret)
+      @sercet = secret
+    end
+
     def send(host, path, article)
       conn = connection(host, path)
       begin
-        conn.post path, article
+        conn.post do |req|
+          req.url path
+          req.body = article
+          req.headers[KEY_SECRET] = @secret
+        end
       rescue => e
         LodgeWebhook::logger.error e
+        # raise e
       end
     end
 

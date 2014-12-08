@@ -38,6 +38,6 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.lodge_webhook.webhook_url = 'http://localhost:3000'
-
+  config.lodge_webhook.webhook_secret = 'fd93e783e4e1cac28c749fb247c12e40'
 
 end

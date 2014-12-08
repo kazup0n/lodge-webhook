@@ -16,6 +16,7 @@ module LodgeWebhook
     initializer "lodge_webhook" do |app|
       LodgeWebhook.config do |config|
         config[:webhook_url] = app.config.lodge_webhook[:webhook_url]
+        config[:webhook_secret] = app.config.lodge_webhook[:webhook_secret]
       end
     end
 

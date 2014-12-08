@@ -19,7 +19,6 @@ class HookTest < ActiveSupport::TestCase
 
   test 'Hook#send' do
     article = JSON.generate({:p1 => 'p1', :p2 => 'p2'})
-
     sender = mock()
     sender.expects(:send)
     .with('http://localhost:80', '/foo/bar', article)
